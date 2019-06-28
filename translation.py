@@ -7,6 +7,7 @@ def ts(text, translator_language):
 	translator = Translator()
 	translator_text = translator.translate(text, dest=translator_language).text
 	print(translator_text)
+	print()
 	return translator_text
 
 def speak(voice, voice_language):
@@ -33,7 +34,7 @@ def choose_voice(voice_language):
 	return voice_language
 
 def main():
-	print('英翻中請輸入: 1', '中翻英輸入: 2', '離開請輸入: q')
+	print('英翻中請輸入: 1', '中翻英輸入: 2', '離開請輸入: q', '重新選擇請輸入: c')
 	translator = input('請輸入: ')
 	if translator == 'q':
 		exit()
@@ -44,6 +45,8 @@ def main():
 			text = input('請輸入要翻譯的字: ')
 			if text == 'q':
 				exit()
+			elif text == 'c':
+				main()
 			else:
 				voice = ts(text, translator_language)
 				speak(voice, voice_language)
@@ -51,6 +54,6 @@ def main():
 def exit():
 	print('**離開**')
 	sys.exit()
-	
+
 main()
 
